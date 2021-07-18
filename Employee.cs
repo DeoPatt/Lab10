@@ -71,16 +71,17 @@ public void Intro(){
   Console.WriteLine("employee status: " + employmentStatus);
  Console.WriteLine("employees yearly salary: " + yearlySalary);
 }
-public void IncreaseSalary(int percent){
- 
- double bonus = yearlySalary / percent;
-yearlySalary = bonus + yearlySalary;
+public void IncreaseSalary(double percent){
+  percent = percent / 100 ;
+  
+ double bonus = percent * yearlySalary;
+  double Total = yearlySalary + bonus;
   if (percent<0)
   {
     Console.WriteLine("Invalid input. Yearly salary not updated");
     return;
   }
-Console.WriteLine("employee salary updated " + yearlySalary);
+Console.WriteLine("employee salary updated " + Total);
 
 }
 public void RemoveEmployee(){
