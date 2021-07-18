@@ -11,7 +11,7 @@ private string phoneNumber;
 private string title;
 private double yearlySalary;
 private string employmentStatus;
-
+private bool status;
 public string FirstName{get;set;}
 public string LastName{get;set;}
 public int Age{
@@ -49,7 +49,8 @@ public Employee(){
   lastName="unknown";
   id = "unknown";
   age = 0;
-  employmentStatus = "active";
+  employmentStatus = "Unknown";
+  status = true;
  
 }
 public Employee(string empfirstName,string emplastName, string empid, int empage, int empyearlySalary)
@@ -59,19 +60,39 @@ public Employee(string empfirstName,string emplastName, string empid, int empage
   id = empid;
   age = empage;
   employmentStatus = "active";
+  status = true;
 yearlySalary = empyearlySalary;
 }
 public void Intro(){
-  Console.WriteLine("employee firstname is " +firstName);
-  Console.WriteLine("employee lastname is " + lastName);
-  Console.WriteLine("employee id is " + id);
-  Console.WriteLine("employee age is " + age);
-  Console.WriteLine("employee status is currently " + employmentStatus);
- Console.WriteLine("employees yearly salary is " + yearlySalary);
+  Console.WriteLine(" firstname: " +firstName);
+  Console.WriteLine("lastname: " + lastName);
+  Console.WriteLine(" id: " + id);
+  Console.WriteLine(" age: " + age);
+  Console.WriteLine("employee status: " + employmentStatus);
+ Console.WriteLine("employees yearly salary: " + yearlySalary);
 }
 public void IncreaseSalary(int percent){
-yearlySalary = yearlySalary * percent;
-Console.WriteLine("employees updated yearly salary is " + yearlySalary);
+ 
+ double bonus = yearlySalary / percent;
+yearlySalary = bonus + yearlySalary;
+  if (percent<0)
+  {
+    Console.WriteLine("Invalid input. Yearly salary not updated");
+    return;
+  }
+Console.WriteLine("employee salary updated " + yearlySalary);
+
+}
+public void RemoveEmployee(){
   
+  if (status == false)
+  {
+    Console.WriteLine("Employee already inactive");
+  }
+  if (status == true)
+  {
+    status = false;
+    Console.WriteLine("Employee removed Sucessfully !");
+  }
 }
  }
